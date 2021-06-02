@@ -1,0 +1,475 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset204 PTSans-Regular;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red34\green39\blue44;\red235\green243\blue251;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;\csgenericrgb\c13333\c15294\c17255;\csgenericrgb\c92157\c95294\c98431;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28300\viewh17700\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs28\fsmilli14161 \cf2 QUESTION: 4.1\
+	SELECT\
+		city,\
+		count(airport_code)\
+	FROM\
+		dst_project.airports\
+	GROUP BY 1\
+	ORDER BY 2 desc\
+\
+ANSWER: Moscow-Ulyanovsk\
+\
+QUESTION: 4.2. 1
+\f1\fs24 \cf0 \
+	
+\f0\fs28\fsmilli14161 \cf2 SELECT\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 count(distinct f.status)\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 FROM \
+		dst_project.flights f\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 ANSWER:6\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 QUESTION: 4.2. 2\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 SELECT\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 f.status,\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 count(f.aircraft_code)\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 FROM \
+		dst_project.flights f\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 GROUP BY 1\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2  \
+ANSWER: 58\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 QUESTION: 4.2. 3\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 a.model,\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 count(s.seat_no)\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 FROM \
+		dst_project.aircrafts as a\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 JOIN\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 dst_project.seats as s\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 ON a.aircraft_code = s.aircraft_code\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 GROUP BY 1\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 HAVING\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 a.model = 'Boeing 777-300'\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 ANSWER: 402\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 QUESTION: 4.2. 4\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 count(f.flight_id)\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 FROM \
+		dst_project.flights f\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 WHERE\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 f.status = 'Arrived'\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 AND \
+		(f.actual_arrival between '2017-04-01' and '2017-09-01')\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 ANSWER: 74227\
+
+\f1\fs24 \cf0 	\
+	\
+
+\f0\fs28\fsmilli14161 \cf2 QUESTION: 4.3.1\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 /*\'c2\'ee\'ef\'f0\'ee\'f1 1. \'d1\'ea\'ee\'eb\'fc\'ea\'ee \'e2\'f1\'e5\'e3\'ee \'f0\'e5\'e9\'f1\'ee\'e2 \'e1\'fb\'eb\'ee \'ee\'f2\'ec\'e5\'ed\'e5\'ed\'ee \'ef\'ee \'e4\'e0\'ed\'ed\'fb\'ec \'e1\'e0\'e7\'fb?*/\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 SELECT\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 count(f.flight_id)\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 FROM \
+		dst_project.flights f\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 GROUP BY f.status\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 HAVING\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 f.status = 'Cancelled'\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 ANSWER: 437\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 QUESTION: 4.3.2\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 SELECT\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 t.object_type,\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 count(t.object_type)\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 FROM\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 (\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+			a.model model_name,\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2        		'Boeing' object_type\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 FROM \
+			dst_project.AIRCRAFTS a\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 WHERE \
+			a.model like 'Boeing%'\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 UNION ALL\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+			a.model model_name,\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2        		'Sukhoi Superjet' object_type\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 FROM \
+			dst_project.AIRCRAFTS a\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 WHERE \
+			a.model like 'Sukhoi%'\
+
+\f1\fs24 \cf0 	\
+		
+\f0\fs28\fsmilli14161 \cf2 UNION ALL\
+
+\f1\fs24 \cf0 	\
+		
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+			a.model model_name,\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2        '	Airbus' object_type\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 FROM \
+			dst_project.AIRCRAFTS a\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 WHERE \
+			a.model like 'Airbus%'\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 )t\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 GROUP BY1\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 ANSWER:\
+
+\f1\fs24 \cf0 	
+\fs25\fsmilli12806 \cf3 Airbus - 3\
+
+\fs24 \cf0 	
+\fs25\fsmilli12806 \cf3 Boeing - 3\
+
+\fs24 \cf0 	
+\fs25\fsmilli12806 \cf3 Sukhoi Superjet - 1\
+
+\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 QUESTION: 4.3.3.\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 WITH time_zone as\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 (\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+				a.airport_code,\
+				'Europe' object_type\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 FROM \
+				dst_project.airports a\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 WHERE\
+				a.timezone like 'Europe%'\
+
+\f1\fs24 \cf0 	\
+			
+\f0\fs28\fsmilli14161 \cf2 UNION ALL\
+
+\f1\fs24 \cf0 	\
+			
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+				a.airport_code,\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 			'Asia' object_type\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 FROM \
+				dst_project.airports a\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 WHERE \
+				a.timezone like 'Asia%'\
+
+\f1\fs24 \cf0 	\
+			
+\f0\fs28\fsmilli14161 \cf2 UNION ALL\
+
+\f1\fs24 \cf0 	\
+			
+\f0\fs28\fsmilli14161 \cf2 SELECT \
+				a.airport_code,\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 			'Australia' object_type\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 FROM\
+				dst_project.airports a\
+
+\f1\fs24 \cf0 			
+\f0\fs28\fsmilli14161 \cf2 WHERE\
+				a.timezone like 'Australia%'\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 )\
+	\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 SELECT\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 t.object_type,\
+
+\f1\fs24 \cf0 		
+\f0\fs28\fsmilli14161 \cf2 count(t.object_type)\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2 FROM\
+		time_zone t\
+
+\f1\fs24 \cf0 	
+\f0\fs28\fsmilli14161 \cf2  GROUP BY1\
+
+\f1\fs24 \cf0 	\
+
+\f0\fs28\fsmilli14161 \cf2 ANSWER:\
+	
+\f1\fs25\fsmilli12806 \cf3 Asia - 52\
+	Europe -52\
+
+\f0\fs28\fsmilli14161 \cf2 \
+QUESTION :4.3.4\
+	SELECT\
+		flight_id,\
+		f.scheduled_arrival - f.actual_arrival difference\
+	FROM \
+		dst_project.flights f\
+	ORDER BY 2 ASC\
+	LIMIT 1\
+ANSWER: 157571\
+\
+QUESTION: 4.4.1\
+	SELECT\
+		f.scheduled_departure\
+	FROM \
+    		dst_project.flights f\
+	ORDER BY 1 ASC\
+	LIMIT 1\
+ANSWER:  
+\f1\fs25\fsmilli12806 \cf3 \cb4 \uc0\u1072 \u1074 \u1075 \u1091 \u1089 \u1090  14, 2016, 11:45 \u1074 \u1077 \u1095 \u1077 \u1088 \u1072 \
+
+\f0\fs28\fsmilli14161 \cf2 \cb1 \
+QUESTION: 4.4.2 + 3\
+	SELECT\
+		(EXTRACT(epoch FROM f.scheduled_arrival) - EXTRACT(epoch FROM f.scheduled_departure))/60.0 difference\
+	FROM \
+		dst_project.flights f\
+	GROUP BY \
+		difference\
+	ORDER BY 1 desc\
+ANSWER: 530 min\
+\
+	SELECT\
+		f.departure_airport,\
+		f.arrival_airport,\
+		((extract(epoch FROM f.scheduled_arrival) - extract(epoch FROM f.scheduled_departure))/60) difference\
+	FROM \
+		dst_project.flights f\
+	GROUP BY\
+		1,2, f.scheduled_arrival, f.scheduled_departure\
+	ORDER BY 3 DESC\
+ANSWER: 530 min\
+		dme-uus\
+\
+QUESTION: 4.4.4\
+	SELECT\
+		avg((extract(epoch FROM f.scheduled_arrival) - extract(epoch FROM f.scheduled_departure))/60) scheduled\
+	FROM \
+		dst_project.flights f\
+ANSWER:128\
+\
+QUESTION: 4.5.1\
+	SELECT\
+		s.fare_conditions,\
+		count(s.seat_no)\
+	FROM \
+		dst_project.seats s\
+	JOIN \
+		dst_project.aircrafts a\
+		ON s.aircraft_code = a.aircraft_code\
+	WHERE a.aircraft_code like '%SU9%'\
+	GROUP BY1\
+	ORDER BY 2 desc\
+LIMIT 1\
+A: Economy\
+4.5.2\
+SELECT \
+b.total_amount\
+FROM dst_project.bookings b\
+ORDER BY 1 asc\
+LIMIT 1\
+A:3400\
+5.2.3\
+SELECT \
+b.seat_no\
+FROM dst_project.tickets t\
+JOIN\
+dst_project.ticket_flights tf\
+on t.ticket_no = tf.ticket_no\
+JOIN\
+dst_project.boarding_passes b\
+on b.ticket_no = tf.ticket_no\
+WHERE t.passenger_id = '4313 788533'\
+A:2A\
+SELECT\
+'Arrived' status,\
+count(f.flight_id)\
+FROM dst_project.flights f\
+WHERE f.arrival_airport = 'AAQ' and f.status = 'Arrived' and f.actual_arrival between '2017-01-01' and '2017-12-31'\
+UNION ALL\
+SELECT\
+'Departed' status,\
+count(f1.flight_id)\
+FROM dst_project.flights f1\
+WHERE f1.departure_airport = 'AAQ' and f1.status='Arrived' \
+and (f1.actual_departure between '2017-01-01' and '2017-03-01' \
+or f1.actual_departure between '2017-11-30' and '2017-12-31')\
+UNION ALL\
+SELECT\
+'Cancelled' status,\
+count(f2.flight_id)\
+FROM dst_project.flights f2\
+WHERE f2.departure_airport = 'AAQ' and f2.status = 'Cancelled'\
+UNION ALL\
+SELECT\
+'not_to_Moscow' status,\
+count(f3.flight_id)\
+FROM dst_project.flights f3\
+JOIN dst_project.airports a\
+on f3.arrival_airport = a.airport_code\
+WHERE f3.departure_airport = 'AAQ' and a.city !='Moscow'\
+--\'c2\'ee\'ef\'f0\'ee\'f1 5. \'ca\'e0\'ea\'e0\'ff \'ec\'ee\'e4\'e5\'eb\'fc \'f1\'e0\'ec\'ee\'eb\'e5\'f2\'e0 \'eb\'e5\'f2\'ff\'f9\'e5\'e3\'ee \'ed\'e0 \'f0\'e5\'e9\'f1\'e0\'f5 \'e8\'e7 \'c0\'ed\'e0\'ef\'fb \'e8\'ec\'e5\'e5\'f2 \'e1\'ee\'eb\'fc\'f8\'e5 \'e2\'f1\'e5\'e3\'ee \'ec\'e5\'f1\'f2?\
+SELECT\
+distinct b.model,\
+b.count_seat\
+FROM\
+dst_project.flights f\
+JOIN\
+(SELECT\
+a.model,\
+a.aircraft_code,\
+count(s.seat_no) count_seat\
+FROM dst_project.seats s\
+JOIN\
+dst_project.aircrafts a\
+on s.aircraft_code = a.aircraft_code\
+GROUP BY1,2)b\
+on f.aircraft_code = b.aircraft_code\
+WHERE f.departure_airport = 'AAQ' and f.status = 'Arrived'\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs25\fsmilli12806 \cf3 Boeing 737-300\
+130\
+Sukhoi Superjet-100\
+97\
+}
